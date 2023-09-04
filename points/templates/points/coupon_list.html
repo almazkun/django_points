@@ -1,0 +1,6 @@
+{% extends "_base.html" %}
+{% load render_table from django_tables2 %}
+{% block content %}
+    <h1>Coupon List</h1>
+    <div id="table" class="overflow-auto">{% render_table table %}</div>
+{% endblock %}
