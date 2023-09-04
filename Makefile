@@ -16,6 +16,13 @@ push:
 pull:
 	docker pull $(REGISTRY)/$(IMAGE_NAME):latest
 
+run:
+	docker run -it --rm --name $(CONTAINER_NAME) -p 8000:8000 $(REGISTRY)/$(IMAGE_NAME):$(VERSION)
+
+migrate:
+	docker exec -it $(CONTAINER_NAME) python manage.py migrate
+
+
 lint:
 	pipenv run isort --force-single-line-imports --line-width 999 ${FILES}
 	pipenv run autoflake --ignore-init-module-imports --in-place --remove-all-unused-imports ${FILES}

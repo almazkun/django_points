@@ -21,12 +21,17 @@ class BaseModel(models.Model):
 
 
 class Coupon(BaseModel):
-    value = models.PositiveSmallIntegerField("Value")
+    name = models.CharField("Name", max_length=255, help_text="Coupon name")
+    value = models.PositiveSmallIntegerField("Value", help_text="Coupon value")
 
-    active_from = models.DateTimeField("Active from")
-    active_before = models.DateTimeField("Active before")
+    active_from = models.DateTimeField("Active from", help_text="2023-01-01 00:00:00")
+    active_before = models.DateTimeField(
+        "Active before", help_text="2023-12-31 23:59:59"
+    )
 
-    is_multiple = models.BooleanField("Multiple", default=False)
+    is_multiple = models.BooleanField(
+        "Multiple", default=False, help_text="Multiple use"
+    )
     is_used = models.BooleanField("Used", default=False)
 
     code = models.CharField(
