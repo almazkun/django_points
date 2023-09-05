@@ -9,6 +9,7 @@ class CouponTable(tables.Table):
         template_name = "django_tables2/bootstrap5.html"
         attrs = {"class": "table table-striped table-bordered table-hover"}
         fields = [
+            "name",
             "code",
             "value",
             "active_from",
