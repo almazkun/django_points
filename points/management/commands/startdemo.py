@@ -1,6 +1,9 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
+from django.utils import timezone
+
+from points.models import Coupon
 
 SUPERUSER_USERNAME = settings.SUPERUSER_USERNAME
 SUPERUSER_EMAIL = settings.SUPERUSER_EMAIL
@@ -30,9 +33,6 @@ class Command(BaseCommand):
 
     def _create_coupons(self):
         self.stdout.write("Creating coupons...")
-        from django.utils import timezone
-
-        from points.models import Coupon
 
         today, plus_one_year = timezone.now(), timezone.now() + timezone.timedelta(
             days=365

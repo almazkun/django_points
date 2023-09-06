@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 django-tables2 = "*"
+djangorestframework = "*"
+django-debug-toolbar = "*"
 
 [dev-packages]
 coverage = "*"

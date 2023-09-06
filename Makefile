@@ -22,9 +22,14 @@ run:
 migrate:
 	docker exec -it $(CONTAINER_NAME) python manage.py migrate
 
+startdemo:
+	docker exec -it $(CONTAINER_NAME) python manage.py startdemo
 
 lint:
 	pipenv run isort --force-single-line-imports --line-width 999 ${FILES}
 	pipenv run autoflake --ignore-init-module-imports --in-place --remove-all-unused-imports ${FILES}
 	pipenv run isort --use-parentheses --trailing-comma --multi-line 3 --force-grid-wrap 0 --line-width 140 ${FILES}
 	pipenv run black ${FILES}
+
+test:
+	python3 manage.py test

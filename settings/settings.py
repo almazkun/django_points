@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "points",
     "django_tables2",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -167,3 +168,26 @@ LOGGING = {
 SUPERUSER_USERNAME = os.getenv("DJANGO_SUPERUSER_USERNAME")
 SUPERUSER_EMAIL = os.getenv("DJANGO_SUPERUSER_EMAIL")
 SUPERUSER_PASSWORD = os.getenv("DJANGO_SUPERUSER_PASSWORD")
+
+# Django Debug Toolbar
+import sys
+
+if DEBUG and not "test" in sys.argv:
+    try:
+        import debug_toolbar  # noqa
+
+        INSTALLED_APPS += ["debug_toolbar"]
+        MIDDLEWARE = ["debug_toolbar.middleware.DebugToolbarMiddleware"] + MIDDLEWARE
+        import socket
+
+        hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+        INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + [
+            "127.0.0.1",
+            "10.0.2.2",
+        ]
+        DEBUG_TOOLBAR_CONFIG = {
+            "SHOW_TOOLBAR_CALLBACK": lambda request: True,
+        }
+
+    except Exception:
+        pass
