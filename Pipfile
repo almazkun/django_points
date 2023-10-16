@@ -8,12 +8,13 @@ django = "*"
 django-tables2 = "*"
 djangorestframework = "*"
 django-debug-toolbar = "*"
+gunicorn = "==21.2.0"
 
 [dev-packages]
 coverage = "*"
-flake8 = "*"
-pylint = "*"
-autoflake = "*"
+ruff = "*"
+black = "*"
+djlint = "*"
 
 [requires]
 python_version = "3.11"
