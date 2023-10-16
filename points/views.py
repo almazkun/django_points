@@ -1,6 +1,6 @@
 from django.db import transaction
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView
 from django_tables2 import SingleTableView
 from rest_framework.generics import UpdateAPIView
 

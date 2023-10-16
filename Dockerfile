@@ -18,4 +18,4 @@ COPY manage.py ./
 
 ENTRYPOINT [ "gunicorn" ]
 
-CMD [ "--bind", "0.0.0.0:8000", "settings.wsgi:application", "-w", "1", "--threads", "10", "--limit-request-line", "0" ]
+CMD [ "--bind", "0.0.0.0:8000", "settings.wsgi:application", "-w", "4", "--threads", "10" ]

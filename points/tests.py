@@ -1,12 +1,7 @@
-import queue
-import threading
-
 from django.test import TestCase
 from django.urls import reverse
-from rest_framework.exceptions import ValidationError
 
 from points.models import Coupon
-from points.serializers import CouponSerializer
 
 
 # Create your tests here.
