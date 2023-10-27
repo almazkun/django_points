@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 LABEL org.opencontainers.image.source=https://github.com/almazkun/django_points
 
@@ -10,12 +10,12 @@ ENV PYTHONUNBUFFERED 1
 
 COPY ./Pipfile ./Pipfile.lock ./
 
-RUN pip3 install pipenv gunicorn && pipenv install --system
+RUN pip3 install pipenv daphne && pipenv install --system
 
 COPY points ./points
 COPY settings ./settings
 COPY manage.py ./
 
-ENTRYPOINT [ "gunicorn" ]
+ENTRYPOINT [ "daphne" ]
 
-CMD [ "--bind", "0.0.0.0:8000", "settings.wsgi:application", "-w", "4", "--threads", "10" ]
+CMD [ "settings.asgi:application", "-b", "0.0.0.0", "-p", "8000" ]

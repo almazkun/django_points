@@ -170,6 +170,7 @@ SUPERUSER_EMAIL = os.getenv("DJANGO_SUPERUSER_EMAIL")
 SUPERUSER_PASSWORD = os.getenv("DJANGO_SUPERUSER_PASSWORD")
 
 # Django Debug Toolbar
+"""
 import sys
 
 if DEBUG and "test" not in sys.argv:
@@ -191,3 +192,4 @@ if DEBUG and "test" not in sys.argv:
 
     except Exception:
         pass
+"""
